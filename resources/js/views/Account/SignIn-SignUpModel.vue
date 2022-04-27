@@ -17,8 +17,8 @@
                             <input class="form-control" v-model="login_email" type="email" id="si-email" placeholder="johndoe@example.com" required>
                             <div class="invalid-feedback">Please provide a valid email address.</div>
                         </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="si-passworddddggggg" >Password</label>
+                        <div class="mb-3">
+                            <label class="form-label" for="si-password" >Password</label>
                             <div class="password-toggle">
                                 <input class="form-control" v-model="login_password" type="password" id="si-password" required>
                                 <label class="password-toggle-btn" aria-label="Show/hide password">
