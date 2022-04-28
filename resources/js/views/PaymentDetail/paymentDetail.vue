@@ -187,7 +187,7 @@ export default {
             // Access instance methods, e.g. createToken()
             groupComponent.instance.createToken(cardElement).then(result => {
                 // Handle result.error or result.token
-                axios.defaults.baseURL = 'http://127.0.0.1:8999/api';
+                axios.defaults.baseURL = this.BaseUrl + '/api';
                 axios.post('/create-charge', {
                     stripe_token: result.token.id,
                     amount_to_charge: this.$store.state.cartTotal.toFixed(2)
@@ -208,7 +208,7 @@ export default {
         updateCartPayment(response, loader) {
             loader.hide();
             if (!isEmpty(response)) {
-                axios.defaults.baseURL = 'http://127.0.0.1:8999/api';
+                axios.defaults.baseURL = this.BaseUrl + '/api';
                 axios.post('/update-cart-payment', {
                     order_id: this.$store.state.orderId,
                     payment_method: 'credit-card',
@@ -231,7 +231,7 @@ export default {
 
         payPalPayment() {
             let loader = this.$loading.show();
-            axios.post('http://127.0.0.1:8999/api/paypal/payment/add-fund', {
+            axios.post(this.BaseUrl + '/api/paypal/payment/add-fund', {
                 order_id: this.$store.state.orderId,
                 cart: this.$store.state.cart,
                 cart_total: this.$store.state.cartTotal
@@ -253,7 +253,7 @@ export default {
 
         payPalPaymentStatus(paymentId, token, PayerID) {
             let loader = this.$loading.show();
-            axios.get('http://127.0.0.1:8999/api/paypal/payment/status', {
+            axios.get(this.BaseUrl + '/api/paypal/payment/status', {
                 params: {
                     order_id: this.$store.state.orderId,
                     payment_id: paymentId,

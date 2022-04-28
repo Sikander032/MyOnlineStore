@@ -107,7 +107,7 @@ export default {
                 this.isNotEmpty(this.password) && this.isNotEmpty(this.confirm_password))
             {
                 let loader = this.$loading.show();
-                axios.post('http://127.0.0.1:8999/api/user/sign-up', {
+                axios.post(this.BaseUrl + '/api/user/sign-up', {
                     full_name: this.first_name + '' + this.last_name,
                     email_address: this.email_address,
                     password: this.password,
@@ -131,7 +131,7 @@ export default {
 
         signIn() {
             if(this.login_email !== '' && this.login_password !== '') {
-                axios.post('http://127.0.0.1:8999/api/user/sign-in', {
+                axios.post(this.BaseUrl + '/api/user/sign-in', {
                     email: this.login_email,
                     password: this.login_password
                 }).then(response => {

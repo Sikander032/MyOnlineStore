@@ -116,7 +116,7 @@ export default {
             if(! this.checkValidation()){
                 return false;
             }
-            axios.post('http://127.0.0.1:8999/api/user/update-profile', {
+            axios.post(this.BaseUrl + '/api/user/update-profile', {
                 user_id: this.$store.state.userId,
                 api_token: this.$store.state.apiToken,
                 first_name: this.first_name,
@@ -161,7 +161,7 @@ export default {
         },
 
         getUserProfile() {
-            axios.get('http://127.0.0.1:8999/api/user', {
+            axios.get(this.BaseUrl + '/api/user', {
                 params: {
                     api_token: this.$store.state.apiToken,
                 }

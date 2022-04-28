@@ -30,7 +30,7 @@ export default {
     methods:{
         getCustomerOrders() {
             let loader = this.$loading.show();
-            axios.get('http://127.0.0.1:8999/api/customer-orders', {
+            axios.get(this.BaseUrl + '/api/customer-orders', {
                 params: {
                     user_id: this.$store.state.userId,
                     api_token: this.$store.state.apiToken

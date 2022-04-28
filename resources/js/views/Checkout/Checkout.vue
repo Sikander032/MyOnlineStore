@@ -222,7 +222,7 @@ export default {
             {
 
                 let loader = this.$loading.show();
-                axios.put('http://127.0.0.1:8999/api/add-to-cart', {
+                axios.put(this.BaseUrl + '/api/add-to-cart', {
                     order_id: this.$store.state.orderId,
                     user_id: this.$store.state.userId,
                     cart: isEmpty(this.$store.state.cart) ? '' : this.$store.state.cart,

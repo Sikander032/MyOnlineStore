@@ -181,7 +181,7 @@ export default {
     methods: {
         loadProduct() {
             let loader = this.$loading.show();
-            axios.get('http://127.0.0.1:8999/api/product-detail', {
+            axios.get(this.BaseUrl + '/api/product-detail', {
                 params: {
                     product_id:this.$route.params.product_id,
                 }

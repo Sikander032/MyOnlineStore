@@ -94,8 +94,7 @@ export default {
         }
     },
     created() {
-
-        axios.get('http://127.0.0.1:8999/api/products', {
+        axios.get(this.BaseUrl+ '/api/products', {
             params: {
                 trending_products: true,
             }

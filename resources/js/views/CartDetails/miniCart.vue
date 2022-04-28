@@ -58,7 +58,7 @@ export default {
             this.$store.commit('removeFromCart', item);
         },
         addToCart() {
-            axios.put('http://127.0.0.1:8999/api/add-to-cart', {
+            axios.put(this.BaseUrl + '/api/add-to-cart', {
                 user_id: this.$store.state.userId,
                 order_id: this.$store.state.orderId,
                 cart: this.$store.state.cart,

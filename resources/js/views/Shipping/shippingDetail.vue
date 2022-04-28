@@ -82,7 +82,7 @@ export default {
         },
         updateShippingMethod() {
             let loader = this.$loading.show();
-            axios.put('http://127.0.0.1:8999/api/update-shipping-method', {
+            axios.put(this.BaseUrl + '/api/update-shipping-method', {
                     order_id: this.$store.state.orderId,
                     shipping_method: this.shipping_method,
             }).then(response => {

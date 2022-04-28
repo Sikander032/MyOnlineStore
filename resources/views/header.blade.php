@@ -21,6 +21,7 @@
         <link rel="stylesheet"  href="{{asset('vendor/drift-zoom/dist/drift-basic.min.css')}}"/>
         <!-- Main Theme Styles + Bootstrap-->
         <link rel="stylesheet"  href="{{asset('assets/css/theme.min.css')}}">
+        <input type="hidden" id="app_url" @isset($app_url) value="{{$app_url}}" @endisset/>
         <!-- Google Tag Manager-->
         <script src="https://js.stripe.com/v3/"></script>
         <script>

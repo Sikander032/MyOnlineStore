@@ -60,8 +60,8 @@ class PayPalPaymentController extends Controller
             ->setItemList($item_list)
             ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl('http://127.0.0.1:8999/payment') /** Specify return URL **/
-        ->setCancelUrl('http://127.0.0.1:8999/payment');
+        $redirect_urls->setReturnUrl(this.BaseUrl + '/payment') /** Specify return URL **/
+        ->setCancelUrl(this.BaseUrl + '/payment');
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)

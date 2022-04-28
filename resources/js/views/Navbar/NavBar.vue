@@ -162,7 +162,7 @@ export default {
         },
         getDepartments() {
             let loader = this.$loading.show();
-            axios.get('http://127.0.0.1:8999/api/departments', {}).then(response => {
+            axios.get(this.BaseUrl + '/api/departments', {}).then(response => {
                 loader.hide();
                 this.departments = response.data.data;
             }).catch(error => {

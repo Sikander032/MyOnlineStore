@@ -159,7 +159,7 @@ export default {
         submitReview() {
             if(this.form.full_name !== '' && this.form.email !== '' && this.form.rating !== '' && this.form.review !== '') {
                 let loader = this.$loading.show();
-                axios.put('http://127.0.0.1:8999/api/submit-review', {
+                axios.put(this.BaseUrl + '/api/submit-review', {
                         review: this.form,
                         product_id: this.$route.params.product_id
                 }).then(response => {
@@ -177,7 +177,7 @@ export default {
 
         getReviews() {
             let loader = this.$loading.show();
-            axios.get('http://127.0.0.1:8999/api/get-reviews', {
+            axios.get(this.BaseUrl + '/api/get-reviews', {
                 params: {
                     sort_by: this.sortBy,
                     page: this.pageNumber,

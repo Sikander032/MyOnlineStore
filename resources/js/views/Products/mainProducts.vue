@@ -1040,7 +1040,7 @@ export default {
             let sorting = event ? event.target.value : '';
             let loader = this.$loading.show();
             let self = this;
-            axios.get('http://127.0.0.1:8999/api/products', {
+            axios.get(this.BaseUrl + '/api/products', {
                 params: {
                     page: this.page,
                     department_id:this.$route.params.department,
@@ -1072,7 +1072,7 @@ export default {
             let loader = this.$loading.show();
             this.page++;
             let self = this;
-            axios.get('http://127.0.0.1:8999/api/products', {
+            axios.get(this.BaseUrl + '/api/products', {
                 params: {
                     page: this.page
                 }
@@ -1090,7 +1090,7 @@ export default {
             let loader = this.$loading.show();
             this.page--;
             let self = this;
-            axios.get('http://127.0.0.1:8999/api/products', {
+            axios.get(this.BaseUrl + '/api/products', {
                 headers: {
                     'X-Authorization': self.api_token
                 },
@@ -1111,7 +1111,7 @@ export default {
             let loader = this.$loading.show();
             let self = this;
             this.page = currentPage;
-            axios.get('http://127.0.0.1:8999/api/products', {
+            axios.get(this.BaseUrl + '/api/products', {
                 params: {
                     page: this.page
                 }

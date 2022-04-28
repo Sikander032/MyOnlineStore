@@ -29,7 +29,7 @@ export default {
     },
     created() {
         let self = this;
-        axios.get('http://127.0.0.1:8999/api/main-page-slider', {
+        axios.get(this.BaseUrl + '/api/main-page-slider', {
             headers: {
                 'X-Authorization': self.api_token
             },

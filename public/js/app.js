@@ -2027,7 +2027,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.isNotEmpty(this.full_name) && this.isNotEmpty(this.email_address) && this.isNotEmpty(this.password) && this.isNotEmpty(this.confirm_password)) {
         var loader = this.$loading.show();
-        axios.post('http://127.0.0.1:8999/api/user/sign-up', {
+        axios.post(this.BaseUrl + '/api/user/sign-up', {
           full_name: this.full_name,
           email_address: this.email_address,
           password: this.password,
@@ -2068,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.isNotEmpty(this.email) && this.isNotEmpty(this.password)) {
-        axios.post('http://127.0.0.1:8999/api/user/sign-in', {
+        axios.post(this.BaseUrl + '/api/user/sign-in', {
           // api_token: this.$store.state.apiToken,
           email: this.login_email,
           password: this.login_password
@@ -2088,7 +2088,7 @@ __webpack_require__.r(__webpack_exports__);
     getLoggedInUser: function getLoggedInUser() {
       var _this3 = this;
 
-      axios.get('http://127.0.0.1:8999/api/user', {
+      axios.get(this.BaseUrl + '/api/user', {
         headers: {
           'X-Authorization': self.api_token
         },
@@ -2599,7 +2599,7 @@ __webpack_require__.r(__webpack_exports__);
     addToCart: function addToCart() {
       var _this = this;
 
-      axios.put('http://127.0.0.1:8999/api/add-to-cart', {
+      axios.put(this.BaseUrl + '/api/add-to-cart', {
         user_id: this.$store.state.userId,
         order_id: this.$store.state.orderId,
         cart: this.$store.state.cart
@@ -3424,7 +3424,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.isNotEmpty(this.shipping_address.first_name) && this.isNotEmpty(this.shipping_address.last_name) && this.isNotEmpty(this.shipping_address.email) && this.isNotEmpty(this.shipping_address.phone_number) && this.isNotEmpty(this.shipping_address.address_1)) {
         var loader = this.$loading.show();
-        axios.put('http://127.0.0.1:8999/api/add-to-cart', {
+        axios.put(this.BaseUrl + '/api/add-to-cart', {
           order_id: this.$store.state.orderId,
           user_id: this.$store.state.userId,
           cart: Object(lodash__WEBPACK_IMPORTED_MODULE_2__["isEmpty"])(this.$store.state.cart) ? '' : this.$store.state.cart,
@@ -3498,7 +3498,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var loader = this.$loading.show();
-      axios.get('http://127.0.0.1:8999/api/complete-order', {
+      axios.get(this.BaseUrl + '/api/complete-order', {
         params: {
           order_id: this.$store.state.orderId,
           order_number: this.orderNumber
@@ -4024,7 +4024,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var loader = this.$loading.show();
-      axios.get('http://127.0.0.1:8999/api/departments', {}).then(function (response) {
+      axios.get(this.BaseUrl + '/api/departments', {}).then(function (response) {
         loader.hide();
         _this.departments = response.data.data;
       })["catch"](function (error) {
@@ -4600,7 +4600,7 @@ __webpack_require__.r(__webpack_exports__);
 
       groupComponent.instance.createToken(cardElement).then(function (result) {
         // Handle result.error or result.token
-        axios.defaults.baseURL = 'http://127.0.0.1:8999/api';
+        axios.defaults.baseURL = _this.BaseUrl + '/api';
         axios.post('/create-charge', {
           stripe_token: result.token.id,
           amount_to_charge: _this.$store.state.cartTotal.toFixed(2)
@@ -4624,7 +4624,7 @@ __webpack_require__.r(__webpack_exports__);
       loader.hide();
 
       if (!Object(lodash__WEBPACK_IMPORTED_MODULE_3__["isEmpty"])(response)) {
-        axios.defaults.baseURL = 'http://127.0.0.1:8999/api';
+        axios.defaults.baseURL = this.BaseUrl + '/api';
         axios.post('/update-cart-payment', {
           order_id: this.$store.state.orderId,
           payment_method: 'credit-card',
@@ -4642,7 +4642,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       var loader = this.$loading.show();
-      axios.post('http://127.0.0.1:8999/api/paypal/payment/add-fund', {
+      axios.post(this.BaseUrl + '/api/paypal/payment/add-fund', {
         order_id: this.$store.state.orderId,
         cart: this.$store.state.cart,
         cart_total: this.$store.state.cartTotal
@@ -4664,7 +4664,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       var loader = this.$loading.show();
-      axios.get('http://127.0.0.1:8999/api/paypal/payment/status', {
+      axios.get(this.BaseUrl + '/api/paypal/payment/status', {
         params: {
           order_id: this.$store.state.orderId,
           payment_id: paymentId,
@@ -4839,7 +4839,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8999/api/products', {
+    axios.get(this.BaseUrl + '/api/products', {
       params: {
         trending_products: true
       }
@@ -6115,7 +6115,7 @@ __webpack_require__.r(__webpack_exports__);
       var sorting = event ? event.target.value : '';
       var loader = this.$loading.show();
       var self = this;
-      axios.get('http://127.0.0.1:8999/api/products', {
+      axios.get(this.BaseUrl + '/api/products', {
         params: {
           page: this.page,
           department_id: this.$route.params.department,
@@ -6149,7 +6149,7 @@ __webpack_require__.r(__webpack_exports__);
       var loader = this.$loading.show();
       this.page++;
       var self = this;
-      axios.get('http://127.0.0.1:8999/api/products', {
+      axios.get(this.BaseUrl + '/api/products', {
         params: {
           page: this.page
         }
@@ -6166,7 +6166,7 @@ __webpack_require__.r(__webpack_exports__);
       var loader = this.$loading.show();
       this.page--;
       var self = this;
-      axios.get('http://127.0.0.1:8999/api/products', {
+      axios.get(this.BaseUrl + '/api/products', {
         headers: {
           'X-Authorization': self.api_token
         },
@@ -6186,7 +6186,7 @@ __webpack_require__.r(__webpack_exports__);
       var loader = this.$loading.show();
       var self = this;
       this.page = currentPage;
-      axios.get('http://127.0.0.1:8999/api/products', {
+      axios.get(this.BaseUrl + '/api/products', {
         params: {
           page: this.page
         }
@@ -6410,7 +6410,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var loader = this.$loading.show();
-      axios.get('http://127.0.0.1:8999/api/product-detail', {
+      axios.get(this.BaseUrl + '/api/product-detail', {
         params: {
           product_id: this.$route.params.product_id
         }
@@ -6802,7 +6802,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       if (this.form.full_name !== '' && this.form.email !== '' && this.form.rating !== '' && this.form.review !== '') {
         var loader = this.$loading.show();
-        axios.put('http://127.0.0.1:8999/api/submit-review', {
+        axios.put(this.BaseUrl + '/api/submit-review', {
           review: this.form,
           product_id: this.$route.params.product_id
         }).then(function (response) {
@@ -6824,7 +6824,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       var _this2 = this;
 
       var loader = this.$loading.show();
-      axios.get('http://127.0.0.1:8999/api/get-reviews', {
+      axios.get(this.BaseUrl + '/api/get-reviews', {
         params: {
           sort_by: this.sortBy,
           page: this.pageNumber,
@@ -6961,7 +6961,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateShippingMethod: function updateShippingMethod() {
       var loader = this.$loading.show();
-      axios.put('http://127.0.0.1:8999/api/update-shipping-method', {
+      axios.put(this.BaseUrl + '/api/update-shipping-method', {
         order_id: this.$store.state.orderId,
         shipping_method: this.shipping_method
       }).then(function (response) {
@@ -7165,7 +7165,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.isNotEmpty(this.first_name) && this.isNotEmpty(this.last_name) && this.isNotEmpty(this.email_address) && this.isNotEmpty(this.password) && this.isNotEmpty(this.confirm_password)) {
         var loader = this.$loading.show();
-        axios.post('http://127.0.0.1:8999/api/user/sign-up', {
+        axios.post(this.BaseUrl + '/api/user/sign-up', {
           full_name: this.first_name + '' + this.last_name,
           email_address: this.email_address,
           password: this.password,
@@ -7193,7 +7193,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.login_email !== '' && this.login_password !== '') {
-        axios.post('http://127.0.0.1:8999/api/user/sign-in', {
+        axios.post(this.BaseUrl + '/api/user/sign-in', {
           email: this.login_email,
           password: this.login_password
         }).then(function (response) {
@@ -7601,7 +7601,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     var self = this;
-    axios.get('http://127.0.0.1:8999/api/main-page-slider', {
+    axios.get(this.BaseUrl + '/api/main-page-slider', {
       headers: {
         'X-Authorization': self.api_token
       },
@@ -7831,7 +7831,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var loader = this.$loading.show();
-      axios.get('http://127.0.0.1:8999/api/customer-orders', {
+      axios.get(this.BaseUrl + '/api/customer-orders', {
         params: {
           user_id: this.$store.state.userId,
           api_token: this.$store.state.apiToken
@@ -7984,7 +7984,7 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
 
-      axios.post('http://127.0.0.1:8999/api/user/update-profile', {
+      axios.post(this.BaseUrl + '/api/user/update-profile', {
         user_id: this.$store.state.userId,
         api_token: this.$store.state.apiToken,
         first_name: this.first_name,
@@ -8032,7 +8032,7 @@ __webpack_require__.r(__webpack_exports__);
     getUserProfile: function getUserProfile() {
       var _this2 = this;
 
-      axios.get('http://127.0.0.1:8999/api/user', {
+      axios.get(this.BaseUrl + '/api/user', {
         params: {
           api_token: this.$store.state.apiToken
         }
@@ -58503,6 +58503,132 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_toast_notification__WEBPACK_I
   type: 'success',
   duration: 2000,
   dismissible: true
+});
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.mixin({
+  data: function data() {
+    return {
+      get BaseUrl() {
+        return document.getElementById('app_url').value;
+      }
+
+    };
+  },
+  methods: {
+    showNotification: function showNotification(type, text) {
+      var self = this;
+      self.$toastr(type, '', text);
+    },
+    initializeSendBird: function initializeSendBird() {
+      var self = this;
+      var prefix = getEnvironmentPrefix();
+      sb.connect(prefix + user_id, function (user, error) {
+        if (error) {
+          return;
+        }
+
+        sb.updateCurrentUserInfo(full_name, profile_url, function (response, error) {
+          if (error) {
+            return;
+          }
+        });
+      });
+    },
+    formatDate: function (_formatDate) {
+      function formatDate(_x) {
+        return _formatDate.apply(this, arguments);
+      }
+
+      formatDate.toString = function () {
+        return _formatDate.toString();
+      };
+
+      return formatDate;
+    }(function (timestamp) {
+      return formatDate(timestamp);
+    }),
+    formatTime: function (_formatTime) {
+      function formatTime(_x2) {
+        return _formatTime.apply(this, arguments);
+      }
+
+      formatTime.toString = function () {
+        return _formatTime.toString();
+      };
+
+      return formatTime;
+    }(function (timestamp) {
+      return formatTime(timestamp);
+    }),
+    Ucfirst: function Ucfirst(str) {
+      return ucfirst(str);
+    },
+    in_array: function (_in_array) {
+      function in_array(_x3, _x4) {
+        return _in_array.apply(this, arguments);
+      }
+
+      in_array.toString = function () {
+        return _in_array.toString();
+      };
+
+      return in_array;
+    }(function (value, array) {
+      return in_array(value, array);
+    }),
+    getDate: function getDate() {
+      var today = new Date();
+      return ('0' + today.getDate()).slice(-2) + '/' + ('0' + (today.getMonth() + 1)).slice(-2) + '/' + today.getFullYear();
+    },
+    getISODate: function getISODate() {
+      var event = new Date();
+      return event.toISOString();
+    },
+    isNotValid: function isNotValid(value) {
+      return value === "" || value === null;
+    },
+    getprofilePicture: function getprofilePicture(profileImage) {
+      if (profileImage === "" || profileImage === null) {
+        return "https://assets.myonlinetherapy.com/images/default_user_profile.png";
+      }
+
+      return profileImage;
+    },
+    capitalize: function capitalize(s) {
+      if (typeof s !== "string") return "";
+      return s.charAt(0).toUpperCase() + s.slice(1);
+    },
+    redirectToHome: function redirectToHome() {
+      window.location.href = "/therapy/dashboard";
+    },
+    redirect: function redirect(url) {
+      window.location.href = url;
+    },
+    isVitality: function isVitality(source) {
+      return source.toLowerCase() === 'vitality';
+    },
+    checkValidEmail: function checkValidEmail(email) {
+      var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+      return email !== "" && !emailReg.test(email);
+    },
+    assetUrl: function assetUrl() {
+      return "https://assets.myonlinetherapy.com/";
+    },
+    scrollToTop: function scrollToTop() {
+      document.body.scrollTop = 0; // For Safari
+
+      document.documentElement.scrollTop = 0;
+    },
+    setDefaultBodyBackground: function setDefaultBodyBackground() {
+      document.body.style.background = "linear-gradient(181.73deg, #773CC2 -1.7%, #0E6BA4 8.42%, #1C7CB6 45.52%, #095F94 90.82%)";
+    },
+    getprofileLogo: function getprofileLogo(profileImage) {
+      if (profileImage === "" || profileImage === null) {
+        return "/assets/images/client/logo/logo.png";
+      }
+
+      return profileImage;
+    }
+  }
 });
 window.app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: '#app',

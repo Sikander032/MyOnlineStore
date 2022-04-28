@@ -33,7 +33,7 @@ export default {
 
         getOrderNumber() {
             let loader = this.$loading.show();
-            axios.get('http://127.0.0.1:8999/api/complete-order', {
+            axios.get(this.BaseUrl + '/api/complete-order', {
                 params: {
                     order_id: this.$store.state.orderId,
                     order_number: this.orderNumber
